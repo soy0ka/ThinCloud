@@ -5,7 +5,6 @@ import {
   ReCaptchaV3Provider,
 } from 'firebase/app-check'
 import { app } from '~/service/firebase'
-import { getCookie } from 'react-use-cookie'
 
 const appCheck = initializeAppCheck(app, {
   provider: new ReCaptchaV3Provider(import.meta.env.VITE_RECAPTCHA_SITE_KEY),
@@ -13,10 +12,8 @@ const appCheck = initializeAppCheck(app, {
 })
 
 const getHeader = async () => {
-  const token = getCookie('Authorization')
   const appCheckTokenResponse = await getToken(appCheck, false)
   return {
-    Authorization: `Bearer ${token}`,
     'X-Firebase-AppCheck': appCheckTokenResponse.token,
   }
 }

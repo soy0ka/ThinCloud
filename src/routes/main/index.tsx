@@ -57,7 +57,7 @@ export const Main: React.FC = wrapError(() => {
         다운로드
       </Button>
       {fileLink && (
-        <a href={`https://omicron.onde.us/api/file${fileLink}`} download>
+        <a href={`https://omicron.onde.us/api/file/${fileLink}`} download>
           <Button
             variant="contained"
             sx={{ ...ButtonStyle.maxed, marginTop: '10px' }}

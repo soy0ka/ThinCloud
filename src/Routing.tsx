@@ -8,10 +8,6 @@ const RootLayout = wrapSuspense(
   lazy(() => import('./layouts/root').then((x) => ({ default: x.RootLayout })))
 )
 
-const Login = wrapSuspense(
-  lazy(() => import('./routes/auth/login').then((x) => ({ default: x.Login })))
-)
-
 const NotFound = wrapSuspense(
   lazy(() => import('./routes/main/404page').then((x) => ({ default: x.Main })))
 )
@@ -21,7 +17,6 @@ export const Routing: React.FC = wrapError(() => {
     <Routes>
       <Route element={<RootLayout />}>
         <Route path="/" element={<Main />} />
-        <Route path="/login" element={<Login />} />
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>

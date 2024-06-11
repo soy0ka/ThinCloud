@@ -1,33 +1,54 @@
 import React from 'react'
-import { useMainContext } from '~/context'
-import { useNavigate } from 'react-router-dom'
 import { wrapError } from '~/components/ErrorBoundary'
-import { Box, useMediaQuery, useTheme } from '@mui/material'
+import ButtonStyle from '~/styles/button'
+import { Box, Button, Input, useMediaQuery, useTheme } from '@mui/material'
+import { postFetcher } from '~/util'
+import { toast } from 'react-toastify'
 
 export const Main: React.FC = wrapError(() => {
-  const navigate = useNavigate()
-  const { user } = useMainContext()
-
+  const tlsRegex = /^https:\/\/tls\.kku\.ac\.kr\/local\/ubdoc\/\?.*$/
   const theme = useTheme()
   const isMobile = useMediaQuery(theme.breakpoints.down('md'))
 
-  React.useEffect(() => {
-    if (!user) navigate('/login')
-  }, [user])
+  const [url, setUrl] = React.useState('')
 
+  const handleSubmint = () => {
+    if (!url) return toast.error('URL을 입력해주세요')
+    if (!tlsRegex.test(url)) return toast.error('TLS 문서 링크를 입력해주세요')
+    postFetcher('/download', { url }).then((res) => {
+      console.log(res)
+    })
+  }
   return (
-    user && (
-      <Box
+    <Box
+      sx={{
+        justifyContent: 'center',
+        display: 'absolute',
+        marginTop: '20px',
+        marginLeft: isMobile ? '20px' : '70px',
+        marginRight: isMobile ? '20px' : '70px',
+        maxWidth: '600px',
+        margin: 'auto',
+      }}
+    >
+      <Input
+        placeholder="TLS 문서 링크를 입력하세요"
         sx={{
-          justifyContent: 'center',
-          display: 'absolute',
-          marginTop: '20px',
-          marginLeft: isMobile ? '20px' : '70px',
-          marginRight: isMobile ? '20px' : '70px',
-          maxWidth: '600px',
-          margin: 'auto',
+          width: '100%',
+          borderRadius: '5px',
+          padding: '10px',
+          marginBottom: '10px',
         }}
-      ></Box>
-    )
+        value={url}
+        onChange={(e) => setUrl(e.target.value)}
+      />
+      <Button
+        variant="contained"
+        sx={ButtonStyle.maxed}
+        onClick={() => handleSubmint()}
+      >
+        다운로드
+      </Button>
+    </Box>
   )
 })

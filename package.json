@@ -1,5 +1,5 @@
 {
-  "name": "korailx-front",
+  "name": "omicron-frontend",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -32,7 +32,6 @@
     "react-chartjs-2": "^5.2.0",
     "react-cookie": "^4.1.1",
     "react-dom": "^18.2.0",
-    "react-firebase-hooks": "^5.1.1",
     "react-password-strength-bar": "^0.4.1",
     "react-router-dom": "^6.4.3",
     "react-toastify": "^9.1.1",
@@ -41,7 +40,6 @@
     "swr": "^2.0.3"
   },
   "devDependencies": {
-    "@types/firebase": "^3.2.1",
     "@types/js-cookie": "^3.0.2",
     "@types/node": "^18.11.9",
     "@types/react": "^18.0.27",

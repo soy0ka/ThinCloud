@@ -13,7 +13,7 @@ import {
 import { useMainContext } from '~/context'
 import { useNavigate } from 'react-router-dom'
 import MenuIcon from '@mui/icons-material/Menu'
-import TrainIcon from '@mui/icons-material/Train'
+import Logo from '@mui/icons-material/CloudDownload'
 import { NavMenu, UserMenu } from './components/menu'
 import { wrapError } from '~/components/ErrorBoundary'
 
@@ -41,10 +41,10 @@ export const Nav: React.FC = wrapError(() => {
   const navigateHome = () => navigate('/')
 
   return (
-    <AppBar position="sticky" sx={{ backgroundColor: 'var(--korail-blue)' }}>
+    <AppBar position="sticky" sx={{ backgroundColor: 'var(--primary-color)' }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <TrainIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+          <Logo sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
           <Typography
             variant="h6"
             noWrap
@@ -59,7 +59,7 @@ export const Nav: React.FC = wrapError(() => {
             }}
             onClick={() => navigateHome()}
           >
-            Omicron
+            얇은구름
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -82,7 +82,7 @@ export const Nav: React.FC = wrapError(() => {
               />
             )}
           </Box>
-          <TrainIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+          <Logo sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
           <Typography
             variant="h5"
             noWrap
@@ -98,7 +98,7 @@ export const Nav: React.FC = wrapError(() => {
             }}
             onClick={() => navigateHome()}
           >
-            Omicron
+            얇은구름
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {user && (

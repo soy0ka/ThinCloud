@@ -18,6 +18,8 @@ import { setCookie } from 'react-use-cookie'
 import { fetcher, postFetcher } from '~/util'
 import { useNavigate } from 'react-router-dom'
 import { wrapError } from '~/components/ErrorBoundary'
+import ButtonStyle from '~/styles/button'
+import TypoGraphyStyle from '~/styles/typography'
 import { Visibility, VisibilityOff } from '@mui/icons-material'
 
 export const Login: React.FC = wrapError(() => {
@@ -79,10 +81,7 @@ export const Login: React.FC = wrapError(() => {
       }}
     >
       <Box sx={{ width: '35vh', alignItems: 'center', mt: '3' }}>
-        <Typography
-          variant="h5"
-          sx={{ width: '100%', textAlign: 'center', mt: 1 }}
-        >
+        <Typography variant="h5" sx={{ ...TypoGraphyStyle.center, mt: 1 }}>
           로그인
         </Typography>
         <FormControl sx={{ width: '100%', mt: 1 }} variant="outlined">
@@ -97,6 +96,7 @@ export const Login: React.FC = wrapError(() => {
         <FormControl sx={{ width: '100%', mt: 2 }} variant="outlined">
           <InputLabel htmlFor="password">비밀번호</InputLabel>
           <OutlinedInput
+            label="Password"
             id="outlined-adornment-password"
             type={showPassword ? 'text' : 'password'}
             value={password}
@@ -113,21 +113,13 @@ export const Login: React.FC = wrapError(() => {
                 </IconButton>
               </InputAdornment>
             }
-            label="Password"
           />
         </FormControl>
         <Button
           size="large"
           variant="contained"
-          sx={{
-            width: '100%',
-            mt: 2,
-            bgcolor: 'var(--korail-blue)',
-            color: '#fff',
-          }}
-          onClick={() => {
-            handleLogin()
-          }}
+          sx={{ ...ButtonStyle.maxed, mt: 2 }}
+          onClick={() => handleLogin()}
         >
           로그인
         </Button>

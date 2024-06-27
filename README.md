@@ -1,5 +1,6 @@
 # 얇은 구름
 > ThinCloud
+> [백엔드](https://github.com/soy0ka/ThinCloud-backend)
 
 ![image](https://github.com/soy0ka/ThinCloud/assets/55011525/a690a044-033a-4dd2-bb3a-30a6f41112aa)
 
